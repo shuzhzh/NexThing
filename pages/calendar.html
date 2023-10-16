@@ -1,0 +1,80 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">
+     <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/script.js"></script>
+    <title>基础日历</title>
+</head>  
+<body> 
+    <div class='clock'> 
+    <h1>基础日历</h1>  
+    <input type="date" id="datepicker" onchange="updateCalendar()"/>  
+    <button onclick="addEvent()">添加事件</button>  
+    <table id="calendarTable">  
+    </table>  
+  
+    <script>  
+        var events = []; // 用于存储所有事件  
+  
+        function updateCalendar() {  
+            var date = new Date(document.getElementById('datepicker').value);  
+            var month = date.getMonth();  
+            var year = date.getFullYear();  
+  
+            // 清空日历表格和事件列表  
+            document.getElementById('calendarTable').innerHTML = '';  
+            events = [];  
+  
+            // 添加月份和年份  
+            var header = document.createElement('tr');  
+            header.innerHTML = '<th colspan="7">' + month + '月 ' + year + '年</th>';  
+            document.getElementById('calendarTable').appendChild(header);  
+  
+            // 添加日期  
+            var dateCell, row, day;  
+            for (var i = 1; i <= 6; i++) {  
+                row = document.createElement('tr');  
+                for (var j = 1; j <= 7; j++) {  
+                    dateCell = document.createElement('td');  
+                    day = (i-1) * 7 + j;  
+                    if (day <= date.getDate()) {  
+                        dateCell.innerHTML = day;  
+                        // 在该日期单元格上添加一个按钮用于添加事件  
+                        var addEventButton = document.createElement('button');  
+                        addEventButton.innerHTML = '添加事件';  
+                        addEventButton.onclick = function() {  
+                            addEvent(day); // 将事件添加到指定日期的事件列表中  
+                        };  
+                        dateCell.appendChild(addEventButton);  
+                    } else {  
+                        dateCell.innerHTML = '&nbsp;';  
+                    }  
+                    row.appendChild(dateCell);  
+                }  
+                document.getElementById('calendarTable').appendChild(row);  
+            }  
+        }  
+  
+        function addEvent() {  
+            // 弹出添加事件的对话框，获取事件信息并添加到事件列表中  
+            var eventName = prompt('请输入事件名称：');  
+            if (eventName) {  
+                events.push({ date: new Date(document.getElementById('datepicker').value), name: eventName });  
+                // 在日历表格中显示新添加的事件  
+                var eventCell, eventNameCell, row;  
+                for (var i = 0; i < events.length; i++) {  
+                    row = document.createElement('tr');  
+                    eventCell = document.createElement('td');  
+                    eventNameCell = document.createElement('td');  
+                    eventNameCell.innerHTML = events[i].name;  
+                    eventCell.appendChild(eventNameCell);  
+                    row.appendChild(eventCell);  
+                    document.getElementById('calendarTable').appendChild(row);  
+                }  
+            }  
+        }  
+    </script>
+    </div>  
+</body>  
+</html>
