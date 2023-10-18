@@ -81,3 +81,31 @@ function calculatePercentage(clicks) {
 
   return percentage.toFixed(2);
 }
+
+document.addEventListener('DOMContentLoaded', function () {  
+    const icons = document.querySelectorAll('.icon');  
+    let clicks = JSON.parse(localStorage.getItem('clicks')) || { icon1: 0, icon2: 0, icon3: 0 };  
+  
+    icons.forEach((icon, index) => {  
+        icon.addEventListener('click', function () {  
+            clicks[`icon${index + 1}`]++;  
+            localStorage.setItem('clicks', JSON.stringify(clicks));  
+            displayResult();  
+        });  
+    });  
+    displayResult();  
+});
+
+function displayResult() {  
+    const clicks = JSON.parse(localStorage.getItem('clicks'));  
+    const totalClicks = Object.values(clicks).reduce((a, b) => a + b, 0);  
+    const resultElement = document.getElementById('result');  
+    let result = '';  
+  
+    for (const key in clicks) {  
+        const percentage = ((clicks[key] / totalClicks) * 100).toFixed(2);  
+        result += `<p>${key}: ${clicks[key]} (${percentage}%)</p>`;  
+    }  
+  
+    resultElement.innerHTML = result;  
+}

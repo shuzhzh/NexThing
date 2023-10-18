@@ -3,24 +3,34 @@
   <head>
       <meta charset="UTF-8">
       <title>Lightly-HTML-Project</title>
-      <link type="text/css" rel="stylesheet" href="css/HomPage_Style.css"/>
-      <script type="text/javascript" src="js/HomePage_Script.js"></script>
+      <link type="text/css" rel="stylesheet" href="../css/HomPage_Style.css"/>
+      <script type="text/javascript" src="../js/HomePage_Script.js"></script>
   </head>
+  
   <body>
     <div class="container"> 
         <form id="baidu_search_form">  
-           <input type="text" id="baidu_search_input" placeholder="try it..." />  
+           <input type="text" id="baidu_search_input" placeholder="Try it..." width="300px
+           "/>  
            <button type="submit" id="baidu_search_button">Baidu</button>  
         </form>
-    </div>
+   
     
-    <h2>Button Click Counter</h2>
+  <div id="icons">  
+        <i class="icon fa fa-home" id="icon1" >
+          <img src="../img/icon/deep-sleep.png" >
+          </i>  
+        <i class="icon fa fa-user" id="icon2">
+          <img src="../img/icon/dinning.png">
+          </i>  
+        <i class="icon fa fa-shopping-cart" id="icon3">
+         <img src="../img/icon/drink.png">
+          </i>  
+    </div>  
 
-<button id="button1">Button 1</button>
-<button id="button2">Button 2</button>
-<button id="button3">Button 3</button>
 
-<div id="result"></div>
+
+
     <h2>Label Click Counter</h2>
 
 <input type="text" id="labelInput" placeholder="Enter label text">
@@ -28,5 +38,7 @@
 <button id="countButton">Count</button>
 
 <div id="result"></div>
+
+ </div>
   </body>
 </html>

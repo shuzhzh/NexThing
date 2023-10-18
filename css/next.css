@@ -4,21 +4,17 @@
             background-color: #f0f0f0;
             padding: 2% 5%;
             border-radius: 10px
-            
         }
-        .image-container {  
-            max-width: 100%; /* 图片最大宽度为容器宽度 */  
-            height: auto; /* 自动调整图片高度以保持比例 */  
-        } 
+
         ul {
             padding-left: 20px;
         }
 
             ul li {
-            line-height: 2.3
+                line-height: 2.3
             }
 
         a {
             color: #20a53a
         }
-      
+       

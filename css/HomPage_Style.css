@@ -5,3 +5,19 @@
             padding: 2% 5%;
             border-radius: 10px
         }
+
+#icons {  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            gap: 50px;  
+        }  
+    .icon {  
+            font-size: 50px;  
+            cursor: pointer; 
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            gap: 50px;  
+             }  
+             
