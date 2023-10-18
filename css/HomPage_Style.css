@@ -1,23 +1,48 @@
-   .container {
-            width: 60%;
+   
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+            width: 80%;
+            height: 60%;
             margin: 10% auto 0;
             background-color: #f0f0f0;
             padding: 2% 5%;
-            border-radius: 10px
+            border-radius: 10px;
+            text-align: center;
         }
+.input-container {
+    margin-bottom: 20px;
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center; /* 让内容水平居中 */
+}
 
-#icons {  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            gap: 50px;  
-        }  
-    .icon {  
-            font-size: 50px;  
-            cursor: pointer; 
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            gap: 50px;  
-             }  
-             
+#userInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    flex: 1; /* 让输入框占据剩余的空间 */
+}
+
+.purple-button {
+    background-color: purple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.purple-button:hover {
+    background-color: #800080;
+}
+
+.output-container {
+    text-align: center;
+}
