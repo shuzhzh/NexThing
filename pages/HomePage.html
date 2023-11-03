@@ -8,16 +8,18 @@
   </head>
   
   <body>
-
-    <div class="container">
+<div class="container">
         <div class="input-container">
-            <input type="text" id="userInput" placeholder="我准备">
+            <input type="text" id="userInput" placeholder="我想">
             <button id="submitButton" class="purple-button">提交</button>
+            <span id="charCount" class="char-count">0/140</span> <!-- 显示字符数 -->
         </div>
-        <div class="output-container">
-            <div id="outputText"></div>
-        </div>
+    <div class="output-container">
+        <div id="outputText"></div>
     </div>
-
+    <div class="chart-container">
+        <!-- 删除 chartBar 元素，将柱状图以 CSS 方式处理 -->
+    </div>
+    </div>
   </body>
 </html>

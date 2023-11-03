@@ -1,0 +1,62 @@
+<!DOCTYPE html>  
+<html>  
+<head>
+    <meta charset="UTF-8">  
+    <title>数据库操作</title>  
+    <style>  
+                .container {
+            width: 60%;
+            margin: 10% auto 0;
+            background-color: #f0f0f0;
+            padding: 2% 5%;
+            border-radius: 10px
+            
+        }
+        .image-container {  
+            max-width: 100%; /* 图片最大宽度为容器宽度 */  
+            height: auto; /* 自动调整图片高度以保持比例 */  
+        } 
+        ul {
+            padding-left: 20px;
+        }
+
+            ul li {
+            line-height: 2.3
+            }
+
+        a {
+            color: #20a53a
+        }
+      
+    </style>  
+</head>  
+<body>  
+    <div class="container">
+    <h1>增加数据</h1>  
+    <form id="addDataForm" method="POST" action="../php/process_add.php">  
+        <label for="time">时间（请填写0-23整数）：</label>  
+        <input type="text" id="time" name="time" required><br><br>  
+        <label for="thing">可以做的事情：（最好简短一些，不要超过128个字）</label>  
+        <input type="thing" id="thing" name="thing" required><br><br>  
+        <input type="submit" value="提交">  
+    </form>  
+    <h1>查询数据</h1>  
+    <button onclick="getData()">查询</button>       
+    <div id="result"></div>       
+    </div>  
+    <script>  
+        // JavaScript 代码  
+        function getData() {  
+            var xhr = new XMLHttpRequest();  
+            xhr.open("GET", "../php/process_query.php", true);  
+            xhr.onreadystatechange = function () {  
+                if (xhr.readyState === 4 && xhr.status === 200) {  
+                    document.getElementById("result").innerHTML = xhr.responseText;  
+                }  
+            };  
+            xhr.send();  
+        }  
+    </script>  
+    
+</body>  
+</html>
