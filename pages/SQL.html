@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">  
     <title>数据库操作</title>  
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2d8c330e76a8c66771dbe6e73ef3694a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     <style>  
                 .container {
             width: 60%;
@@ -42,7 +52,10 @@
     </form>  
     <h1>查询数据</h1>  
     <button onclick="getData()">查询</button>       
-    <div id="result"></div>       
+    <div id="result"></div>  
+    <h2>请上传图片</h2>  
+   <input type="file" id="fileInput">
+    <button onclick="uploadImage()">上传图片</button>      
     </div>  
     <script>  
         // JavaScript 代码  
@@ -56,6 +69,29 @@
             };  
             xhr.send();  
         }  
+    function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('image', file);
+
+                fetch('../php/upload.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('图片上传成功:', data);
+                })
+                .catch(error => {
+                    console.error('上传出错:', error);
+                });
+            } else {
+                console.log('请选择要上传的图片');
+            }
+        }
     </script>  
     
 </body>  

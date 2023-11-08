@@ -24,3 +24,12 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         console.error('登录过程出现错误:', error);
     });
 });
+
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2d8c330e76a8c66771dbe6e73ef3694a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();

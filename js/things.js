@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     const currentTimeElement = document.getElementById("currentTime");
     const refreshButton = document.getElementById("refreshButton");

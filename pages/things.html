@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2d8c330e76a8c66771dbe6e73ef3694a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     <meta charset="UTF-8">
     <title>NexThing</title>
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
     <script type="text/javascript" src="../js/things.js"></script>
 </head>
+
 <body>
-    <div class="container">
+  <div class="main-container">
+       <div class="container">
         <h3>大家都在做什么？</h3>
           <p>当前时间：<span id="currentTime"></span></p>
           <p>多数人都在：<span id="popularThings"></span></p>
           <button id="refreshButton">刷新</button> 
-    </div>  
+        </div>
+        <div class="container">
+        <h3>大家都在做什么？</h3>
+          <p>努力的人都在：<span id="popularThings"></span></p>
+          <button id="refreshButton">刷新</button> 
+        </div>
+        <div class="container">
+          <h3>NexThing智能助理</h3>
+        </div>
+      </div>
+  
+  <div class="container1">
+      <h3>NexThing电台</h3>
+      <p>最热门的声音</p>
+      <iframe src="https://open.ximalaya.com/new-site/#index/6708/3402a8b62e4ec2be09b6fe282c13d112" width="100%" height="1280" frameborder="0"></iframe>
+  </div>
+
   </body>
 </html>
