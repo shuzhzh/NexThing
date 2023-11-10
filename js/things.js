@@ -107,3 +107,22 @@ function recordActivity() {
     })
     .catch(error => console.error('Error:', error));
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 在页面加载完成后执行
+    fetchData(); // 调用获取数据的函数
+});
+
+window.onload = function() {  
+    fetch('../php/toutiao.php')  
+        .then(response => response.json())  
+        .then(data => {  
+            let list = data.result.list;  
+            for(let i = 0; i < list.length; i++) {  
+                let hotindex = list[i].hotindex;  
+                let word = list[i].word;  
+                document.getElementById("data-container").innerHTML += `搜索指数榜: ${hotindex}, 头条新闻: ${word}<br/>`;  
+            }  
+        })  
+        .catch(error => console.error('Error:', error));  
+};
