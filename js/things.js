@@ -45,9 +45,61 @@ document.addEventListener("DOMContentLoaded", function() {
                 popularThingsElement.innerText = displayData.join(", ");
                 popularThingsElement.classList.add("purple");
             } else {
-                popularThingsElement.innerText = "好像都";
+                popularThingsElement.innerText = "好像都躺平了";
+            }
+        })
+        .catch(error => console.error('出错了', error));
+    }
+    function fetchData_lizhi() {
+        let currentTime = new Date().getHours();
+
+        fetch('../php/get_lizhi.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ time: currentTime })
+        })
+        .then(response => response.json())
+        .then(data => {
+            let popularThingsElement = document.getElementById("lizhiThings");
+            let displayData = data.filter(item => item !== null && item !== undefined);
+            if (displayData.length > 0) {
+                popularThingsElement.innerText = displayData.join(", ");
+                popularThingsElement.classList.add("purple");
+            } else {
+                popularThingsElement.innerText = "好像都躺平了";
             }
         })
         .catch(error => console.error('出错了', error));
     }
 });
+
+
+function recordActivity() {
+    let activityInput = document.getElementById('activity');
+    let activity = activityInput.value.trim();
+
+    if (activity === '') {
+        alert('请输入正在做的事情！');
+        return;
+    }
+
+    let currentTime = new Date().getHours();
+
+    fetch('../php/insert.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            time: currentTime,
+            thing: activity
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('responseMessage').innerText = data.message;
+    })
+    .catch(error => console.error('出错了', error));
+}
