@@ -1,7 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     const currentTimeElement = document.getElementById("currentTime");
     const refreshButton = document.getElementById("refreshButton");
+    const refreshLizhiButton = document.getElementById("refreshLizhiButton");
 
     // 更新当前时间，并设置格式为 HH:MM:SS
     function updateTime() {
@@ -9,120 +9,117 @@ document.addEventListener("DOMContentLoaded", function() {
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
-        currentTimeElement.innerText = hours + ":" + minutes + ":" + seconds;
+        currentTimeElement.innerText = `${hours}:${minutes}:${seconds}`;
     }
 
     // 刷新数据按钮点击事件处理
-    refreshButton.addEventListener("click", function() {
-        fetchData();
-    });
+    refreshButton.addEventListener("click", fetchData);
 
-    // 获取当前时间
-    updateTime();
+    // 刷新努力的人按钮点击事件处理
+    refreshLizhiButton.addEventListener("click", fetchDataLizhi);
 
-    // 设置当前时间的样式为紫色
-    currentTimeElement.classList.add("purple");
+    // 记录活动的函数
+    function recordActivity() {
+        const activityInput = document.getElementById('activity');
+        const activity = activityInput.value.trim();
 
-    // 定时更新当前时间
-    setInterval(updateTime, 1000);
+        if (activity === '') {
+            alert('请输入正在做的事情！');
+            return;
+        }
+
+        const currentTime = new Date().getHours();
+
+        fetch('../php/insert.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                time: currentTime,
+                thing: activity
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Data:', data);
+            document.getElementById('responseMessage').innerText = data.message;
+        })
+        .catch(error => {
+            console.error('Error recording activity:', error);
+        });
+    }
 
     // 请求数据的函数
     function fetchData() {
-        let currentTime = new Date().getHours();
+        const currentTime = new Date().getHours();
 
-        fetch('../php/get_data.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ time: currentTime })
-        })
-        .then(response => response.json())
-        .then(data => {
-            let popularThingsElement = document.getElementById("popularThings");
-            let displayData = data.filter(item => item !== null && item !== undefined);
-            if (displayData.length > 0) {
-                popularThingsElement.innerText = displayData.join(", ");
-                popularThingsElement.classList.add("purple");
-            } else {
-                popularThingsElement.innerText = "好像都躺平了";
-            }
-        })
-        .catch(error => console.error('出错了', error));
+        fetchAndDisplayData('../php/get_data.php', 'popularThings', currentTime);
     }
-    function fetchData_lizhi() {
-        let currentTime = new Date().getHours();
 
-        fetch('../php/get_lizhi.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ time: currentTime })
-        })
-        .then(response => response.json())
-        .then(data => {
-            let popularThingsElement = document.getElementById("lizhiThings");
-            let displayData = data.filter(item => item !== null && item !== undefined);
-            if (displayData.length > 0) {
-                popularThingsElement.innerText = displayData.join(", ");
-                popularThingsElement.classList.add("purple");
-            } else {
-                popularThingsElement.innerText = "好像都躺平了";
-            }
-        })
-        .catch(error => console.error('出错了', error));
+    function fetchDataLizhi() {
+        const currentTime = new Date().getHours();
+
+        fetchAndDisplayData('../php/get_lizhi.php', 'lizhiThings', currentTime);
     }
+
+    // 获取新闻数据
+    function fetchNews() {
+        const newsApiUrl = "../php/toutiao.php";
+
+        fetch(newsApiUrl)
+            .then(response => response.json())
+            .then(data => {
+                displayNews(data.result.list);
+            })
+            .catch(error => {
+                console.error('Error fetching news data:', error);
+            });
+    }
+
+    // 显示新闻数据
+    function displayNews(newsList) {
+        const newsContainer = document.getElementById("news-container");
+        const newsListElement = document.createElement("ul");
+
+        newsList.forEach(newsItem => {
+            const newsItemElement = document.createElement("li");
+            newsItemElement.textContent = newsItem.word;
+            newsListElement.appendChild(newsItemElement);
+        });
+
+        newsContainer.appendChild(newsListElement);
+    }
+
+    // 在页面加载完成后执行
+    updateTime();
+    currentTimeElement.classList.add("purple");
+    setInterval(updateTime, 1000);
+    fetchData(); // 调用获取数据的函数
+    fetchNews(); // 调用获取新闻的函数
 });
 
-
-function recordActivity() {
-    let activityInput = document.getElementById('activity');
-    let activity = activityInput.value.trim();
-
-    if (activity === '') {
-        alert('请输入正在做的事情！');
-        return;
-    }
-
-    let currentTime = new Date().getHours();
-
-    fetch('../php/insert.php', {
+// 通用的数据获取和展示函数
+function fetchAndDisplayData(url, elementId, currentTime) {
+    fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            time: currentTime,
-            thing: activity
-        })
+        body: JSON.stringify({ time: currentTime })
     })
-    .then(response => {
-        console.log('Response:', response);
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-        console.log('Data:', data);
-        document.getElementById('responseMessage').innerText = data.message;
+        const element = document.getElementById(elementId);
+        const displayData = data.filter(item => item !== null && item !== undefined);
+        if (displayData.length > 0) {
+            element.innerText = displayData.join(", ");
+            element.classList.add("purple");
+        } else {
+            element.innerText = "好像都躺平了";
+        }
     })
-    .catch(error => console.error('Error:', error));
-};
-
-document.addEventListener("DOMContentLoaded", function() {
-    // 在页面加载完成后执行
-    fetchData(); // 调用获取数据的函数
-});
-
-window.onload = function() {  
-    fetch('../php/toutiao.php')  
-        .then(response => response.json())  
-        .then(data => {  
-            let list = data.result.list;  
-            for(let i = 0; i < list.length; i++) {  
-                let hotindex = list[i].hotindex;  
-                let word = list[i].word;  
-                document.getElementById("data-container").innerHTML += `搜索指数榜: ${hotindex}, 头条新闻: ${word}<br/>`;  
-            }  
-        })  
-        .catch(error => console.error('Error:', error));  
-};
+    .catch(error => {
+        console.error(`Error fetching and displaying data for ${elementId}:`, error);
+    });
+}
