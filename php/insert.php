@@ -27,22 +27,19 @@ if ($checkResult->num_rows > 0) {
     // 存在相同的记录
     $response = array('message' => '相同的记录已存在，不允许重复插入。');
 } else {
-    // 插入新记录
+    // 使用参数化查询插入新记录
     $insertQuery = "INSERT INTO nexthing (time, thing) VALUES (?, ?)";
     $stmt = $conn->prepare($insertQuery);
-    
-    // 使用 bind_param 绑定参数
     $stmt->bind_param("is", $time, $thing);
-    
-    // 执行预处理语句
-    $stmt->execute();
-    
 
-    if ($conn->query($insertQuery) === TRUE) {
+    if ($stmt->execute()) {
         $response = array('message' => '记录插入成功。');
     } else {
-        $response = array('message' => '插入记录时发生错误：' . $conn->error);
+        $response = array('message' => '插入记录时发生错误：' . $stmt->error);
     }
+
+    // 关闭预处理语句
+    $stmt->close();
 }
 
 // 关闭数据库连接

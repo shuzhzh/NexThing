@@ -97,9 +97,13 @@ function recordActivity() {
             thing: activity
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log('Response:', response);
+        return response.json();
+    })
     .then(data => {
+        console.log('Data:', data);
         document.getElementById('responseMessage').innerText = data.message;
     })
-    .catch(error => console.error('出错了', error));
-}
+    .catch(error => console.error('Error:', error));
+};
