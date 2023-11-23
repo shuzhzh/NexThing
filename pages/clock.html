@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+.timer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80px;
+  color: purple;
+  background: white;
+  width: 400px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  margin: auto;
+  border: 10px solid white;
+}
+</style>
+</head>
+<body>
+<div class="timer" id="timer">00:00:00</div>
+<script>
+// Get the element
+var timer = document.getElementById("timer");
+
+// Update the timer every second
+setInterval(function() {
+  // Get the current time
+  var date = new Date();
+  var h = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
+
+  // Format the time
+  var hStr = h < 10 ? "0" + h : h;
+  var mStr = m < 10 ? "0" + m : m;
+  var sStr = s < 10 ? "0" + s : s;
+  var timeStr = hStr + ":" + mStr + ":" + sStr;
+
+  // Display the time
+  timer.innerHTML = timeStr;
+}, 1000);
+</script>
+</body>
+</html>

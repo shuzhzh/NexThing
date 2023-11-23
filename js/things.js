@@ -1,125 +1,86 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    // 获取页面中的元素
     const currentTimeElement = document.getElementById("currentTime");
     const refreshButton = document.getElementById("refreshButton");
-    const refreshLizhiButton = document.getElementById("refreshLizhiButton");
-
-    // 更新当前时间，并设置格式为 HH:MM:SS
-    function updateTime() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        currentTimeElement.innerText = `${hours}:${minutes}:${seconds}`;
-    }
+    const popularThingsContainer = document.getElementById("popularThings");
+    const lizhiThingsContainer = document.getElementById("lizhiThings");
+    const dynamicDataContainer = document.getElementById("dynamicDataContainer");
 
     // 刷新数据按钮点击事件处理
-    refreshButton.addEventListener("click", fetchData);
-
-    // 刷新努力的人按钮点击事件处理
-    refreshLizhiButton.addEventListener("click", fetchDataLizhi);
-
-    // 记录活动的函数
-    function recordActivity() {
-        const activityInput = document.getElementById('activity');
-        const activity = activityInput.value.trim();
-
-        if (activity === '') {
-            alert('请输入正在做的事情！');
-            return;
-        }
-
-        const currentTime = new Date().getHours();
-
-        fetch('../php/insert.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                time: currentTime,
-                thing: activity
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Data:', data);
-            document.getElementById('responseMessage').innerText = data.message;
-        })
-        .catch(error => {
-            console.error('Error recording activity:', error);
+    if (refreshButton) {
+        refreshButton.addEventListener("click", function () {
+            fetchData('https://www.nexthing.cc/php/get_data.php', 'popularThings');
+            fetchData('https://www.nexthing.cc/php/get_lizhi.php', 'lizhiThings');
+            fetchData('https://www.nexthing.cc/php/seniorthing.php', 'thing-container');
         });
     }
 
-    // 请求数据的函数
-    function fetchData() {
-        const currentTime = new Date().getHours();
-
-        fetchAndDisplayData('../php/get_data.php', 'popularThings', currentTime);
+    // 获取并显示数据的函数
+    function fetchData(apiUrl, containerId) {
+        fetchAndDisplayData(apiUrl, containerId);
     }
 
-    function fetchDataLizhi() {
-        const currentTime = new Date().getHours();
-
-        fetchAndDisplayData('../php/get_lizhi.php', 'lizhiThings', currentTime);
-    }
-
-    // 获取新闻数据
-    function fetchNews() {
-        const newsApiUrl = "../php/toutiao.php";
-
-        fetch(newsApiUrl)
+    // 从 API 获取数据并显示在页面上
+    function fetchAndDisplayData(apiUrl, containerId) {
+        fetch(apiUrl)
             .then(response => response.json())
             .then(data => {
-                displayNews(data.result.list);
+                // Check if data is empty
+                if (data.length === 0) {
+                    const message = document.createElement('p');
+                    message.textContent = "好像所有人都躺平了。还是摸鱼一会就洗洗睡吧。";
+                    document.body.appendChild(message);
+                } else {
+                    let things = data.result.things || []; // 获取数据库中的数据
+
+                    // 如果数据为空，显示默认消息
+                    const displayContent = things.length > 0
+                        ? things.map(thing => `<p>${thing}</p>`).join('')
+                        : '<p>好像现在所有人都躺平了</p>';
+
+                    const container = document.getElementById(containerId);
+
+                    if (container) {
+                        container.innerHTML = displayContent;
+                    } else {
+                        console.error(`Container with id ${containerId} not found.`);
+                    }
+                }
             })
             .catch(error => {
-                console.error('Error fetching news data:', error);
+                console.error(`Error fetching data from ${apiUrl}:`, error);
             });
     }
 
-    // 显示新闻数据
-    function displayNews(newsList) {
-        const newsContainer = document.getElementById("news-container");
-        const newsListElement = document.createElement("ul");
-
-        newsList.forEach(newsItem => {
-            const newsItemElement = document.createElement("li");
-            newsItemElement.textContent = newsItem.word;
-            newsListElement.appendChild(newsItemElement);
+    // 获取并显示英语数据
+    fetch('https://www.nexthing.cc/php/english.php')
+        .then(response => response.json())
+        .then(data => {
+            var content = data.result.content;
+            var htmlContent = `<p><strong>Content:</strong> ${content}</p>`;
+            if (dynamicDataContainer) {
+                dynamicDataContainer.innerHTML = htmlContent;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching English data:', error);
         });
 
-        newsContainer.appendChild(newsListElement);
-    }
-
     // 在页面加载完成后执行
-    updateTime();
-    currentTimeElement.classList.add("purple");
-    setInterval(updateTime, 1000);
-    fetchData(); // 调用获取数据的函数
-    fetchNews(); // 调用获取新闻的函数
+    updateTime();                         // 更新当前时间
+    currentTimeElement.classList.add("purple");  // 添加 CSS 类
+    setInterval(updateTime, 1000);        // 每秒更新时间
+    fetchData('https://www.nexthing.cc/php/get_data.php', 'popularThings'); // 调用获取数据的函数
+    fetchData('https://www.nexthing.cc/php/get_lizhi.php', 'lizhiThings');  // 调用获取努力的人数据的函数
+    fetchData('https://www.nexthing.cc/php/seniorthing.php', 'thing-container'); // 调用获取 seniorthing 数据的函数
 });
 
-// 通用的数据获取和展示函数
-function fetchAndDisplayData(url, elementId, currentTime) {
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ time: currentTime })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const element = document.getElementById(elementId);
-        const displayData = data.filter(item => item !== null && item !== undefined);
-        if (displayData.length > 0) {
-            element.innerText = displayData.join(", ");
-            element.classList.add("purple");
-        } else {
-            element.innerText = "好像都躺平了";
-        }
-    })
-    .catch(error => {
-        console.error(`Error fetching and displaying data for ${elementId}:`, error);
-    });
-}
+// 每秒更新计时器
+setInterval(function () {
+    // 如果这里有其他代码，请将其添加在这里
+}, 1000);
+
+// 动态插入一个广告脚本
+var script = document.createElement('script');
+script.src = 'http://wm.lrswl.com/page/s.php?s=322927&w=468&h=60';
+document.body.appendChild(script);

@@ -1,4 +1,7 @@
 <?php
+// 允许来自任何域的请求
+header('Access-Control-Allow-Origin: *');
+
 
 // 检查是否有文件上传
 if (isset($_FILES['image'])) {

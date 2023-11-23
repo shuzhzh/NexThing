@@ -1,0 +1,55 @@
+body, html {  
+    height: 100%;  
+    margin: 0;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    background: url('../img/egg.jpg') no-repeat center center fixed;   
+    -webkit-background-size: cover;  
+    -moz-background-size: cover;  
+    -o-background-size: cover;  
+    background-size: cover;  
+}  
+  
+.clock {  
+    width: 300px;  
+    height: 300px;  
+    border: 16px solid white;  
+    border-radius: 50%;  
+    position: relative;  
+    background: url('../img/steak.jpg') no-repeat center center;   
+    background-size: cover;  
+}  
+  
+.hand {  
+    position: absolute;  
+    bottom: 50%;  
+    width: 2px;  
+    height: 50%;  
+    background: black;  
+    transform-origin: bottom center;  
+    transition: all 0.05s;  
+    transition-timing-function: steps(1, end);  
+}  
+  
+.hour-hand {  
+    height: 30%;  
+    width: 6px;  
+    bottom: 40%;  
+    background: url('../img/pen.jpg') no-repeat center center;   
+    background-size: contain;  
+}  
+  
+.minute-hand {  
+    height: 40%;  
+    width: 4px;  
+    bottom: 30%;  
+    background: url('../img/fork.jpg') no-repeat center center;   
+    background-size: contain;  
+}  
+  
+.second-hand {  
+    height: 50%;  
+    width: 2px;  
+    background: red;  
+}

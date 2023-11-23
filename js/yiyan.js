@@ -1,17 +1,26 @@
-// 定义API密钥  
-var apiKey = 'k0wQ99Yz6UED2icWpxCZkSvT';  
+document.addEventListener('DOMContentLoaded', function() {  
+    var form = document.getElementById('chat-form');  
+    var userInput = document.getElementById('user-input');  
+    var responseDiv = document.getElementById('response');  
   
-// 定义初始配置参数  
-var config = {  
-    container: 'ewm-container', // 对话框容器ID  
-    apiKey: apiKey, // API密钥  
-    chatBotName: '小树', // 对话框标题  
-    logoUrl: 'https://www.example.com/logo.png', // Logo URL（可选）  
-    chatBotAvatarUrl: 'https://www.example.com/avatar.png' // 对话框头像URL（可选）  
-};  
+    form.addEventListener('submit', function(event) {  
+        event.preventDefault(); // 阻止表单默认提交行为  
   
-// 定义开始对话函数  
-function startConverse() {  
-    var ewm = new EWMBot(config);  
-    ewm.start(); // 开始对话  
-}
+        // 发送 AJAX 请求到 PHP 文件  
+        var xhr = new XMLHttpRequest();  
+        xhr.open('POST', '../php/yiyan.php', true); // 将 'your-php-file.php' 替换为你的 PHP 文件名  
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');  
+        xhr.onreadystatechange = function() {  
+            if (xhr.readyState === XMLHttpRequest.DONE) {  
+                if (xhr.status === 200) {  
+                    // 请求成功，显示响应结果到页面上  
+                    responseDiv.innerHTML = xhr.responseText;  
+                } else {  
+                    // 请求失败，显示错误信息  
+                    responseDiv.innerHTML = '请求失败：' + xhr.status;  
+                }  
+            }  
+        };  
+        xhr.send('user_input=' + encodeURIComponent(userInput.value)); // 将用户输入作为参数发送到 PHP 文件  
+    });  
+});

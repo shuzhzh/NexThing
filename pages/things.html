@@ -2,47 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NexThing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexThing--接下来做什么？</title>
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
-    <script type="text/javascript" src="../js/things.js"></script>
 </head>
 <body>
-    <div class="main-container">
+    <div class="main-container">      
         <div class="container" align="center">
-            <h1>NexThing</h1>
+            <h1>NexThing--接下来做什么？</h1>
         </div> 
         <div class="container">
-            <h3>大家都在做什么？</h3>
-            <p>当前时间：<span id="currentTime"></span></p>
-            <p>多数人都在：<span id="popularThings"></span>
-            <button id="refreshButton">刷新</button></p> 
-            <h3>努力的人都在：<span id="lizhiThings"></span>
-            <button id="refreshLizhiButton">刷新</button></h3> <!-- 修改按钮 ID，并将标题移至合适的位置 -->
-            
+            <h3>NexThing Daily English</h3>
+            <div id="dynamicDataContainer"></div>
+        </div> 
+        <div class="container">
+            <h1>大家都在做什么？<!-- <button id="refreshButton">刷新</button> --> </h1>
+            <p>当前时间：<div align="center"><span id="currentTime" class="timer"></span></div></p>
+    
+            <!--<h3>多数人都在：<span id="popularThings"></span></h3>
+            <h3>努力的人都在：<span id="lizhiThings"></span></h3>
+           
+            <div class="thing-container" id="thingList1"></div>
+            <div class="thing-container" id="thingList2"></div>
+            <div class="thing-container" id="thingList3"></div>
             <form id="recordForm">
-                <h3>我正在做的事情：（不要超过128个字符）</h3>
-                <label for="activity">活动：</label>
+                <h3>我正在做的：（不要超过128个字符）</h3>
+                <label for="activity">Thing：</label>
                 <input type="text" id="activity" maxlength="128" required>
                 <button type="button" onclick="recordActivity()">提交</button>
             </form>
 
-            <div id="responseMessage"></div>
+            <div id="responseMessage"></div> -->
+        </div>
+        <div class="container">
+            <h1>NexThing建议
+                <a href="../pages/seniorthing.html" target="_blank">
+                    <img src="../img/go.png" alt="头条热榜" width="50" height="50" align="center" style="float: right;">
+                </a>
+            </h1>
+            <!-- 用于显示数据的div元素，id属性用于在JavaScript中选择元素 -->  
+            <div id="data-container-1"></div>  
+            <div id="data-container-2"></div>  
+            <div id="data-container-3"></div>
+        </div>
+        <script src="https://www.nexthing.cc/js/seniorthing.js" defer></script>  
+        <div class="container" >
+            <h1>NexThing热点
+                <a href="../pages/NexThing_news.html" target="_blank">
+                    <img src="../img/go.png" alt="微信热点文章" width="50" height="50" align="center" style="float: right;">
+                </a>
+            </h1>
+            <p>微信热点文章</p>
         </div>
         
         <div class="container">
-            <h3>NexThing新闻</h3>
-            <div id="news-container"></div>
+            <h1>NexThing新闻
+                <a href="../pages/NexThing_toutiao.html" target="_blank">
+                    <img src="../img/go.png" alt="头条热榜" width="50" height="50" align="center" style="float: right;">
+                </a>
+            </h1>
+            <p>头条新闻热榜</p>    
         </div>
         
         <div class="container">
-            <h3>NexThing智能助理</h3>
+            <h1>NexThing助理
+                <a href="https://yiyan.baidu.com/" target="_blank">
+                    <img src="../img/go.png" alt="微信热点文章" width="50" height="50" align="center" style="float: right;">
+                </a>
+            </h1>
+            <p>智能AI助理</p>
         </div>
 
         <div class="container1">
-            <h3>NexThing电台</h3>
+            <h1>NexThing电台
+                <a href="../pages/NexThing_radio.html" target="_blank">
+                    <img src="../img/go.png" alt="NexThing电台" width="50" height="50" align="center" style="float: right;">
+                </a>
+            </h1>
             <p>最热门的声音</p>
-            <iframe src="https://open.ximalaya.com/new-site/#index/6708/3402a8b62e4ec2be09b6fe282c13d112" width="100%" height="1280" frameborder="0"></iframe>
         </div>
     </div>
+
+    <script>
+        var timer = document.getElementById("currentTime");
+
+        // Update the timer every second
+        setInterval(function() {
+            // Get the current time
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+
+            // Format the time
+            var hStr = h < 10 ? "0" + h : h;
+            var mStr = m < 10 ? "0" + m : m;
+            var sStr = s < 10 ? "0" + s : s;
+            var timeStr = hStr + ":" + mStr + ":" + sStr;
+
+            // Display the time
+            timer.innerHTML = timeStr;
+        }, 1000);
+    </script>
+    <script type="text/javascript" src="https://www.nexthing.cc/js/things.js" defer></script>
+    <script src="http://wm.lrswl.com/page/?s=322874"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?2d8c330e76a8c66771dbe6e73ef3694a";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </body>
 </html>

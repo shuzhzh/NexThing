@@ -1,35 +1,58 @@
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .main-container{
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-        } 
-        .container {
-            flex: 1;
-            background-color: #e0e0e0;
-            margin: 10px;
-            padding: 20px;
-        }
-        .container1 {
-            flex: 1;
-            background-color: #f2f2f2;
-            padding: 20px; 
-        }
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
+body {
+    margin: 10;
+    padding: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-            .main-content, .sidebar {
-                flex: 1;
-            }
-        }
-        
-       
-      
+.main-container {
+    flex: 2; /* 修改 .main-container 的 flex 属性 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 让内容在主轴上居中对齐 */
+}
+
+.container {
+    flex: 1;
+    background-color: #f2f2f2;
+    margin: 10px;
+    padding: 20px;
+    width: 60%; /* 让 .container 充满父容器的宽度 */
+    box-sizing: border-box; /* 防止边框和内边距增加元素的宽度 */
+}
+
+.container1 {
+    flex: 1;
+    background-color: #f2f2f2;
+    margin: 10px;
+    padding: 20px;
+    width: 60%; /* 让 .container1 充满父容器的宽度 */
+    box-sizing: border-box; /* 防止边框和内边距增加元素的宽度 */
+}
+
+@media (max-width: 1080px) {
+    body {
+        flex-direction: column;
+    }
+
+    .container, .container1 {
+        flex: 1;
+    }
+}
+
+.timer {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 200%;
+    color: purple;
+    background: f2f2f2;
+    width: 100%px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    margin: auto;
+    border: 10px solid f2f2f2;
+}
+.ifr{
+    width: 120%;
+}

@@ -1,18 +1,15 @@
+
 <?php
+
 // 允许来自任何域的请求
 header('Access-Control-Allow-Origin: *');
 
-// 假设这里是你的数据库连接信息
+// 连接数据库
 $servername = "localhost";
 $username = "nexthing";
 $password = "Shuzhzh0923";
 $dbname = "nexthing";
 
-// 获取前端发送的时间
-$data = json_decode(file_get_contents('php://input'), true);
-$time = $data['time'];
-
-// 创建数据库连接
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // 检查连接是否成功
@@ -20,19 +17,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// 查询数据库中对应时间的随机三个数据
-$sql = "SELECT thing FROM nexthing WHERE time = $time ORDER BY RAND() LIMIT 3";
+// 获取当前用户访问的小时数
+$currentHour = date("G");
+
+// 构建查询语句，获取符合条件的最大三个数据内容
+$sql = "SELECT thing, url, other FROM senior_thing WHERE time = $currentHour ORDER BY thing DESC LIMIT 3";
 $result = $conn->query($sql);
 
-$things = array();
+// 将查询结果转换为数组并输出为 JSON
+$data = array();
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        array_push($things, $row['thing']);
+        $data[] = $row;
     }
 }
+echo json_encode($data);
 
-// 将查询到的数据发送回前端
-echo json_encode($things);
-
+// 关闭数据库连接
 $conn->close();
 ?>

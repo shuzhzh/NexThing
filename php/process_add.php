@@ -1,4 +1,7 @@
 <?php  
+// 允许来自任何域的请求
+header('Access-Control-Allow-Origin: *');
+
 // 连接数据库（根据实际情况填写数据库信息）  
 $servername = "localhost";  
 $username = "nexthing";  

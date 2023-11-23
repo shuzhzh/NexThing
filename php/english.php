@@ -1,7 +1,4 @@
 <?php	
-// 允许来自任何域的请求
-header('Access-Control-Allow-Origin: *');
-
 function posturl($url, $data){
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
@@ -12,11 +9,11 @@ function posturl($url, $data){
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     $output = curl_exec($curl);
     curl_close($curl);
-    return $output;
+    return  $output;
 }
 
 $parArr = array('key' => '66e263806d51ebe800dc5d91548953fc');
-$tianapi_data = posturl('https://apis.tianapi.com/toutiaohot/index', $parArr);
+$tianapi_data = posturl('https://apis.tianapi.com/everyday/index', $parArr);
 $json = json_decode($tianapi_data, true);
 
 // 设置响应头，确保输出的是 JSON 格式
