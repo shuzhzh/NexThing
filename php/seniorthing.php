@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 $currentHour = date("G");
 
 // 构建查询语句，获取符合条件的最大三个数据内容
-$sql = "SELECT thing, url, other FROM senior_thing WHERE time = $currentHour ORDER BY thing DESC LIMIT 3";
+$sql = "SELECT thing, url, other FROM senior_thing WHERE time = $currentHour ORDER BY RAND() DESC LIMIT 3";
 $result = $conn->query($sql);
 
 // 将查询结果转换为数组并输出为 JSON

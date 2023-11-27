@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Check if data is empty
                 if (data.length === 0) {
                     const message = document.createElement('p');
-                    message.textContent = "好像所有人都躺平了。还是摸鱼一会就洗洗睡吧。";
+                    message.textContent = "好像所有人都躺平了。还是摸一会鱼,就洗洗睡吧。";
                     document.body.appendChild(message);
                 } else {
                     let things = data.result.things || []; // 获取数据库中的数据

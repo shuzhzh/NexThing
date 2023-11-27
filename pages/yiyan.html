@@ -3,62 +3,89 @@
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="发现生活中下一步该做什么。为您提供午餐、约会等建议。让这个基于AI的网站指导您做出决策。">
+    <link rel="icon" href="../img/Group 1.png">
+    <meta name="google-adsense-account" content="ca-pub-7115244402517644">
     <title>NexThing 智能AI助理</title>  
-    <link type="text/css" rel="stylesheet" href="../css/style.css"/>  
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>  
     <style>  
         #user-input {  
-            width: 100%; /* Make sure the textarea is full width */  
-            height: 150px; /* Specify a height for the textarea */  
+            width: 100%; /* 保证文本区域宽度铺满 */  
+            height: 150px; /* 指定文本区域高度 */  
         }  
+
+        /* 为用户和AI消息添加样式 */
+        .user-message {
+            background-color: #e0f7fa; /* 用户消息的浅蓝色背景 */
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .ai-message {
+            background-color: #b2dfdb; /* AI消息的浅绿色背景 */
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            text-align: left;
+        }
     </style>  
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-12JNTQ6LCS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-12JNTQ6LCS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-12JNTQ6LCS');
-</script>
+        gtag('config', 'G-12JNTQ6LCS');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7115244402517644"
+    crossorigin="anonymous"></script>
 </head>  
-<body>  
-<div class="main-container">  
-    <div class="container"  align="center">
-        <h1>NexThing 智能 AI 助理</h1>
-        <h3>基于百度 文心一言</h3>
-        <p>作为你的智能AI助理，我既能写文案，想点子，又能陪你聊天、答疑解惑。</p>
-        <p>快来试着问问我关于你的日程要怎么来规划吧，每天1分钟，帮你安排合理日程。</p>
-    </div>
-    <div class="container" id="chat-container">  
-        <div id="chat-box"></div>  
-        <textarea id="user-input" placeholder="我当前时间做什么好？请直接说出你的建议。。。" rows="4"></textarea>  
-        <button onclick="sendMessage()">问问看</button>  
+<body>
+    <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-7115244402517644">
+    </amp-auto-ads>  
+    <div class="main-container">  
+        <div class="container"  align="center">
+            <h1>NexThing 智能 AI 助理</h1>
+            <h3>基于百度 文心一言</h3>
+            <p>作为你的智能AI助理，我既能写文案，想点子，又能陪你聊天、答疑解惑。</p>
+            <p>快来试着问问我关于你的日程要怎么来规划吧，每天1分钟，帮你安排合理日程。</p>
+        </div>
+        <div class="container" id="chat-container">  
+            <div id="chat-box" class="dialog-container"></div>  
+            <textarea id="user-input" placeholder="我当前时间做什么好？请直接说出你的建议。。。" rows="4"></textarea>  
+            <button onclick="sendMessage()">发送</button>  
+        </div>  
     </div>  
-</div>  
-<script>  
-    function sendMessage() {  
-        var userInput = document.getElementById('user-input').value;  
-        var chatBox = document.getElementById('chat-box');  
-  
-        // Display user's message  
-        chatBox.innerHTML += '<div>User: ' + userInput + '</div>';  
-  
-        // Call PHP backend to interact with the chat API  
-        var xhr = new XMLHttpRequest();  
-        xhr.open("POST", "../php/yiyan.php", true);  
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
-        xhr.onreadystatechange = function () {  
-            if (xhr.readyState === 4 && xhr.status === 200) {  
-                // Display AI's response  
-                chatBox.innerHTML += '<div>AI: ' + xhr.responseText + '</div>';  
-            }  
-        };  
-        xhr.send("userInput=" + userInput);  
-          
-        // Clear the textarea after sending the message  
-        document.getElementById('user-input').value = "";  
-    }  
-</script>  
-  
+    <script>  
+        function sendMessage() {  
+            var userInput = document.getElementById('user-input').value;  
+            var chatBox = document.getElementById('chat-box');  
+
+            // 显示用户消息  
+            chatBox.innerHTML += '<div class="user-message">我: ' + userInput + '</div>';  
+
+            // 调用PHP后端与聊天API交互  
+            var xhr = new XMLHttpRequest();  
+            xhr.open("POST", "../php/yiyan.php", true);  
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
+            xhr.onreadystatechange = function () {  
+                if (xhr.readyState === 4 && xhr.status === 200) {  
+                    // 显示AI的响应  
+                    chatBox.innerHTML += '<div class="ai-message">NexThing AI助理: ' + xhr.responseText + '</div>';  
+                }  
+            };  
+            xhr.send("userInput=" + userInput);  
+              
+            // 发送消息后清除文本区域  
+            document.getElementById('user-input').value = "";  
+        }  
+    </script>  
 </body>  
 </html>

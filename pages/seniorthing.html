@@ -3,11 +3,15 @@
 <head>  
     <meta charset="UTF-8">  
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="发现生活中下一步该做什么。为您提供午餐、约会等建议。让这个基于AI的网站指导您做出决策。">
+    <link rel="icon" href="../img/Group 1.png">
+    <meta name="google-adsense-account" content="ca-pub-7115244402517644">  
     <title>NexThing--接下来做什么？</title>  
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
     <!-- 引入外部的JavaScript文件，该文件包含用于获取和显示数据的代码 -->  
-    <script src="https://www.nexthing.cc/js/seniorthing.js" defer></script>  
+    <script src="https://www.nexthing.cc/js/seniorthing.js" defer></script>
+    <script src="https://www.nexthing.cc/js/share.js" defer></script>    
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-12JNTQ6LCS"></script>
 <script>
@@ -17,14 +21,38 @@
 
   gtag('config', 'G-12JNTQ6LCS');
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7115244402517644"
+     crossorigin="anonymous"></script>
+     <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+</script>
+<style>
+  .share-btn {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+</style>
 </head>  
 <body>  
+  <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-7115244402517644">
+</amp-auto-ads>
     <div class="main-container">
+      <div class="container" align="center">
+        <h1>NexThing--接下来做什么？</h1>
+      </div>
       <div class="container">
         <!-- 用于显示数据的div元素，id属性用于在JavaScript中选择元素 -->  
         <div id="data-container-1"></div>  
         <div id="data-container-2"></div>  
         <div id="data-container-3"></div>
+      </div>
+      <div class="container">
+        <!-- 分享按钮 -->
+<button class="share-btn" onclick="shareToFacebook()">Facebook</button>
+<button class="share-btn" onclick="shareToTwitter()">Twitter</button>
+<button class="share-btn" onclick="shareToWeibo()">微博</button>
+<button class="share-btn" onclick="shareToTelegram()">Telegram</button>
       </div>
     </div>  
 </body>  
