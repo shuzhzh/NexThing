@@ -1,0 +1,87 @@
+Date : 2023-11-27 23:17:40
+Directory : /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2
+Total : 54 files,  2185 codes, 234 comments, 338 blanks, all 2757 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| HTML       |         19 |      1,066 |         42 |         86 |      1,194 |
+| JavaScript |         13 |        482 |         98 |         96 |        676 |
+| PHP        |         16 |        387 |         92 |        118 |        597 |
+| CSS        |          5 |        247 |          2 |         37 |        286 |
+| Markdown   |          1 |          3 |          0 |          1 |          4 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                          |         54 |      2,185 |        234 |        338 |      2,757 |
+| . (Files)                                                                                                                                  |          4 |        110 |          4 |          9 |        123 |
+| css                                                                                                                                        |          5 |        247 |          2 |         37 |        286 |
+| js                                                                                                                                         |         13 |        482 |         98 |         96 |        676 |
+| pages                                                                                                                                      |         16 |        959 |         38 |         78 |      1,075 |
+| php                                                                                                                                        |         16 |        387 |         92 |        118 |        597 |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                   | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/404.html                        | HTML       |         24 |          1 |          1 |         26 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/README.md                       | Markdown   |          3 |          0 |          1 |          4 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/css/HomPage_Style.css           | CSS        |         70 |          0 |         11 |         81 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/css/next.css                    | CSS        |         16 |          0 |          4 |         20 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/css/style.css                   | CSS        |         78 |          2 |         12 |         92 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/css/time.css                    | CSS        |         50 |          0 |          5 |         55 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/css/yiyan.css                   | CSS        |         33 |          0 |          5 |         38 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/index.html                      | HTML       |         59 |          3 |          5 |         67 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/index_back.html                 | HTML       |         24 |          0 |          2 |         26 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/HomPage_Script.js            | JavaScript |         65 |          8 |         19 |         92 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/NexThing_jinritoutiao.js     | JavaScript |         40 |          7 |          6 |         53 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/NexThing_news.js             | JavaScript |         42 |          8 |          6 |         56 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/NexThing_toutiao.js          | JavaScript |         29 |          9 |          7 |         45 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/NexThing_weibo.js            | JavaScript |         29 |          9 |          7 |         45 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/lizhi.js                     | JavaScript |         39 |          6 |          8 |         53 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/login.js                     | JavaScript |         30 |          1 |          5 |         36 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/script.js                    | JavaScript |         24 |          4 |          6 |         34 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/seniorthing.js               | JavaScript |         21 |          3 |          1 |         25 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/share.js                     | JavaScript |         18 |          8 |          8 |         34 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/things.js                    | JavaScript |        107 |         32 |         19 |        158 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/time.js                      | JavaScript |         17 |          0 |          2 |         19 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/js/yiyan.js                     | JavaScript |         21 |          3 |          2 |         26 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/HomePage.html             | HTML       |         32 |          2 |          2 |         36 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/NexThing_news.html        | HTML       |         54 |          1 |          3 |         58 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/NexThing_radio.html       | HTML       |         51 |          1 |          3 |         55 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/NexThing_toutiao.html     | HTML       |         54 |          1 |          2 |         57 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/NexThing_toutiaonews.html | HTML       |         54 |          1 |          2 |         57 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/NexThing_weibo.html       | HTML       |         54 |          1 |          3 |         58 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/SQL.html                  | HTML       |         99 |          1 |          8 |        108 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/calendar.html             | HTML       |         83 |          1 |          7 |         91 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/clock.html                | HTML       |         49 |          1 |          5 |         55 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/lizhi.html                | HTML       |         26 |          1 |          2 |         29 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/loginadmin.html           | HTML       |         29 |          1 |          4 |         34 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/next.html                 | HTML       |         31 |          1 |          1 |         33 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/police.html               | HTML       |         42 |          3 |         13 |         58 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/seniorthing.html          | HTML       |         54 |          4 |          1 |         59 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/things.html               | HTML       |        163 |         17 |         15 |        195 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/pages/yiyan.html                | HTML       |         84 |          1 |          7 |         92 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/english.php                 | PHP        |         23 |          3 |          4 |         30 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/get_data.php                | PHP        |         23 |          7 |          9 |         39 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/get_lizhi.php               | PHP        |         23 |          7 |          8 |         38 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/insert.php                  | PHP        |         32 |         11 |         12 |         55 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/jinritoutiao.php            | PHP        |         23 |          3 |          3 |         29 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/login.php                   | PHP        |         22 |          5 |          9 |         36 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/logout.php                  | PHP        |          7 |          0 |          2 |          9 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/process_add.php             | PHP        |         20 |          3 |          4 |         27 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/process_query.php           | PHP        |         21 |          8 |          8 |         37 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/seniorthing.php             | PHP        |         22 |          7 |          9 |         38 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/things.php                  | PHP        |         26 |          9 |          7 |         42 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/toutiao.php                 | PHP        |         24 |          4 |          5 |         33 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/upload.php                  | PHP        |         36 |          6 |         13 |         55 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/weibo.php                   | PHP        |         24 |          4 |          5 |         33 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/weixin.php                  | PHP        |         25 |          1 |          5 |         31 |
+| /Users/timshu/Library/Mobile Documents/com~apple~CloudDocs/Timshu/10.小树科技/12.小树NexThing/02.code/NexThing 2/php/yiyan.php                   | PHP        |         36 |         14 |         15 |         65 |
+| Total                                                                                                                                      |            |      2,185 |        234 |        338 |      2,757 |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

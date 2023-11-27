@@ -46,13 +46,34 @@ body {
     font-size: 16px;
     line-height: 1.5;
     padding: 10px;
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
 }
 
 .share-btn {
     cursor: pointer;
     margin-right: 10px;
 }
+
+        /* 按钮样式 */
+        #setHomepageBtn {
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* 提示框样式 */
+        #homepagePrompt {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
 @media (max-width: 768px) {
     body {
