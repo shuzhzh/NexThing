@@ -6,6 +6,12 @@ body {
     justify-content: space-between;
 }
 
+/* 去除所有超链接的下划线 */  
+a {  
+    text-decoration: none;
+    color: black;  
+  }
+
 .main-container {
     flex: 2;
     display: flex;
@@ -20,6 +26,11 @@ body {
     padding: 20px;
     box-sizing: border-box;
     background-color: #f2f2f2;
+}
+
+.two-columns {
+    display: grid;
+    gap: 20px; /* 保留原有的两列展示方式 */
 }
 
 .timer {
@@ -74,6 +85,44 @@ body {
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+
+        #timer {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #DC3445;
+        }
+        
+        #progressBar {
+            width: 100%;
+            height: 20px;
+            background-color: #fff;
+            border: 1px solid #DC3445;
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        #progress {
+            height: 100%;
+            width: 100%;
+            background-color: #DC3445;
+            position: absolute;
+            right: 0;
+        }
+        
+        #startBtn, #addTimeBtn, #restBtn, #stopBtn{
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+
+@media (min-width: 768px) {
+    .two-columns {
+        grid-template-columns: repeat(2, 1fr); /* 在大屏幕上显示两列 */
+    }
+}
 
 @media (max-width: 768px) {
     body {

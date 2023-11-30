@@ -9,9 +9,12 @@
     <meta name="google-adsense-account" content="ca-pub-7115244402517644">  
     <title>NexThing--接下来做什么？</title>  
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
-    <!-- 引入外部的JavaScript文件，该文件包含用于获取和显示数据的代码 -->  
+    <!-- 引入外部的JavaScript文件，该文件包含用于获取和显示数据的代码 -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://www.nexthing.cc/js/seniorthing.js" defer></script>
-    <script src="https://www.nexthing.cc/js/share.js" defer></script>    
+    <script src="https://www.nexthing.cc/js/share.js" defer></script>
+    <script src="https://www.nexthing.cc/js/calendar.js" defer></script>
+    <script src="https://www.nexthing.cc/js/generate_calendar.js" defer></script>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-12JNTQ6LCS"></script>
 <script>
@@ -26,6 +29,16 @@
      <script async custom-element="amp-auto-ads"
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
 </script>
+<script src="http://wm.lrswl.com/page/?s=322874"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2d8c330e76a8c66771dbe6e73ef3694a";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 <style>
   .share-btn {
     cursor: pointer;
@@ -39,13 +52,20 @@
 </amp-auto-ads>
     <div class="main-container">
       <div class="container" align="center">
+        <a href="../pages/things.html" target="_self">
         <h1>NexThing--接下来做什么？</h1>
+        </a>
+        <p>快来看看可以做些什么</p>
+        <button id="subscribeBtn">下载日程</button>
       </div>
       <div class="container">
+        <h1>现在试试这些事情吧：</h1>
         <!-- 用于显示数据的div元素，id属性用于在JavaScript中选择元素 -->  
-        <div id="data-container-1"></div>  
-        <div id="data-container-2"></div>  
-        <div id="data-container-3"></div>
+        <ul> 
+          <p style="line-height: 1.5;"><div id="data-container-1"></div></p>
+          <p style="line-height: 1.5;"><div id="data-container-2"></div></p>
+          <p style="line-height: 1.5;"><div id="data-container-3"></div></p>
+      </ul>
       </div>
       <div class="container">
         <!-- 分享按钮 -->
@@ -53,6 +73,17 @@
 <button class="share-btn" onclick="shareToTwitter()">Twitter</button>
 <button class="share-btn" onclick="shareToWeibo()">微博</button>
 <button class="share-btn" onclick="shareToTelegram()">Telegram</button>
+      </div>
+
+      <div class="container">
+        <h1>今日日程</h1>
+        <div id="schedule"></div>
+      </div>
+      <div class="container">
+        <h1>明日日程</h1>
+        <p>订阅明日日程：只需要将该链接复制到日历软件中订阅即可随时查阅新的日程。</p>
+        <a><p id="calendarLink"></p></a>
+            
       </div>
     </div>  
 </body>  
