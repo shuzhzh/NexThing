@@ -1,22 +1,21 @@
 <?php
-// 从请求中获取时区信息
-$userTimeZone = $_GET['timezone'];
-
-// 检查时区是否有效
-if (!in_array($userTimeZone, timezone_identifiers_list())) {
-    die("Invalid timezone");
-}
+// 从请求中获取时区信息（这里假设前端将时区信息作为参数发送）
+$userTimeZone = $_GET['timezone']; // 请根据你的实际情况修改这里
 
 // 设置 PHP 时区
 date_default_timezone_set($userTimeZone);
 
-// 替换以下信息为你的数据库连接信息
+// 允许来自任何域的请求
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: text/calendar; charset=utf-8');
+header('Content-Disposition: attachment; filename="nexthing_calendar.ics"');
+
+// 连接数据库
 $servername = "localhost";
 $username = "nexthing";
 $password = "Shuzhzh0923";
 $dbname = "nexthing";
 
-// 创建数据库连接
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // 检查连接是否成功
@@ -24,49 +23,46 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// 获取明日的日期
-$tomorrow = date('Y-m-d', strtotime('+1 day'));
+// 生成明天的行程
+$daySchedule = '';
 
-// 定义 iCal 文件内容
-$icalContent = "BEGIN:VCALENDAR
-VERSION:2.0
-CALSCALE:GREGORIAN";
-
-// 每个整点随机选择一条记录
 for ($hour = 0; $hour < 24; $hour++) {
-    // 获取明日某个整点的随机记录
-    $sql = "SELECT * FROM senior_thing WHERE HOUR(time) = $hour ORDER BY RAND() LIMIT 1";
-    $result = $conn->query($sql);
+    // 随机从数据库中取一条数据
+    $query = "SELECT * FROM senior_thing WHERE time = $hour ORDER BY RAND() LIMIT 1";
+    $result = $conn->query($query);
 
-    // 如果有记录，则加入到 iCal 文件中
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
         // 计算事件的开始和结束时间
-        $eventStartDate = date('Ymd\THis', strtotime("{$tomorrow} {$hour}:00:00"));
-        $eventEndDate = date('Ymd\THis', strtotime("{$tomorrow} {$hour}:59:59"));
+        $currentDate = date('Ymd\T00:00:00');
+        $eventStartDate = date('Ymd\THis', strtotime("+1 day +{$hour} hours"));
+        $eventEndDate = date('Ymd\THis', strtotime("+1 day +{$hour} hours +1 hour"));
 
-        $icalContent .= "
-BEGIN:VEVENT
-DTSTART:{$eventStartDate}
-DTEND:{$eventEndDate}
-SUMMARY:{$row['thing']}
-DESCRIPTION:{$row['other']}
-URL:{$row['url']}
-LOCATION:NexThing.cc
-STATUS:CONFIRMED
-SEQUENCE:0
-END:VEVENT";
+        $daySchedule .= "BEGIN:VEVENT\r\n";
+        $daySchedule .= "DTSTART:{$eventStartDate}\r\n";
+        $daySchedule .= "DTEND:{$eventEndDate}\r\n";
+        $daySchedule .= "SUMMARY:{$row['thing']}\r\n";
+        $daySchedule .= "DESCRIPTION:{$row['other']}\r\n";
+        $daySchedule .= "URL:{$row['url']}\r\n";
+        $daySchedule .= "LOCATION:NexThing.cc\r\n";
+        $daySchedule .= "STATUS:CONFIRMED\r\n";
+        $daySchedule .= "SEQUENCE:0\r\n";
+        $daySchedule .= "END:VEVENT\r\n";
     }
 }
 
-$icalContent .= "
-END:VCALENDAR";
+// 创建ICS文件头部
+echo "BEGIN:VCALENDAR\r\n";
+echo "VERSION:2.0\r\n";
+echo "CALSCALE:GREGORIAN\r\n";
+echo "PRODID:-//NexThing//Your NexThing//EN\r\n";
 
-// 输出 iCal 内容
-header('Content-Type: text/calendar; charset=utf-8');
-header('Content-Disposition: attachment; filename="nexthing_calendar.ics"');
-echo $icalContent;
+// 输出行程数据
+echo $daySchedule;
+
+// 创建ICS文件尾部
+echo "END:VCALENDAR";
 
 // 关闭数据库连接
 $conn->close();
