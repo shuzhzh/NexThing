@@ -52,4 +52,4 @@ $(document).ready(function () {
         loadNews();
     });
 });
-document.write('<script src="http://wm.lrswl.com/page/s.php?s=322927&w=468&h=60"></script>');
+
